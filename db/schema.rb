@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 2022_01_02_191840) do
     t.string "title"
     t.text "content"
     t.string "image"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
 end
