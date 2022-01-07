@@ -26,6 +26,10 @@
     <%= form.text_field :image %>
   </div>
 
+  <div class="field">
+    <%= form.select(:author_id, Author.all.map { |a| "#{a.first_name} #{a.last_name} #{a.gender} #{a.birthday}" }) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
