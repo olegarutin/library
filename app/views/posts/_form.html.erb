@@ -27,7 +27,7 @@
   </div>
 
   <div class="field">
-    <%= form.select(:author_id, Author.all.map { |a| "#{a.first_name} #{a.last_name} #{a.gender} #{a.birthday}" }) %>
+    <%= form.select :author_id, Author.all.map { |author| ["#{author.first_name} #{author.last_name} #{author.gender} #{author.birthday}", author.id] } %>
   </div>
 
   <div class="actions">
