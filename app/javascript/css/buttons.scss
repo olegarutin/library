@@ -1,0 +1,17 @@
+@import "bootstrap";
+
+.button {
+  @extend .btn;
+}
+
+.button--blue {
+  @extend .btn-primary, .mx-2;
+}
+
+.button--large {
+  @extend .w-50;
+}
+
+.button--small {
+  @extend .w-25, .mx-4;
+}

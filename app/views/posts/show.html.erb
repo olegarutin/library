@@ -1,23 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="posts">
+  <h1 class="posts__title">Post was successfully created</h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+  <div class="form">
+    <div class="form__field">
+      <label class="form__label">Title</label>
+      <%= text_field_tag 'title', @post.title, class: "form__input", readonly: true %>
+    </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+    <div class="form__field">
+      <label class="form__label d-block">Image</label>
+      <%= image_tag @post.image, class: "form__image", readonly: true %>
+    </div>
 
-<p>
-  <strong>Image:</strong>
-  <%= @post.image %>
-</p>
-<p>
-  <strong>Author:</strong>
-  <%= @post.author.full_name %>
-</p>
+    <div class="form__field">
+      <label class="form__label">Content</label>
+      <%= text_area_tag 'content', @post.content, class: "form__input", readonly: true %>
+    </div>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+    <div class="form__field">
+      <label class="form__label">Author</label>
+      <%= text_field_tag 'author', @post.author.full_name ,class: "form__input", readonly: true %>
+    </div>
+
+    <%= link_to 'Edit', edit_post_path(@post), class: "button button--blue button--small" %>
+    <%= link_to 'Back', posts_path, class: "button button--blue button--small" %>
+  </div>
+</div>
