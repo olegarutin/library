@@ -10,7 +10,10 @@ import "channels"
 
 import 'bootstrap'
 import '../css/application'
-import '../css/posts'
+import '../css/main'
+import '../css/inputs'
+import '../css/buttons'
+import '../css/headers'
 
 Rails.start()
 Turbolinks.start()

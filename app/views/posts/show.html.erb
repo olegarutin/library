@@ -1,28 +1,28 @@
-<div class="form text-center mx-auto rounded col-5 p-4 bg-white">
-  <div>
-    <p id="notice"><%= notice %></p>
-  </div>
+<div class="posts">
+  <h1 class="posts__title">Post was successfully created</h1>
 
-  <div class="field form-outline m-4">
-    <h5>Title</h5>
-    <%= text_field_tag 'title', @post.title, class: "form-control mb-4" %>
-  </div>
+  <div class="form">
+    <div class="form__field">
+      <label class="form__label">Title</label>
+      <%= text_field_tag 'title', @post.title, class: "form__input", readonly: true %>
+    </div>
 
-  <div class="field form-outline m-4">
-    <h5>Content</h5>
-    <%= text_area_tag 'content', @post.content, class: "form-control mb-4" %>
-  </div>
+    <div class="form__field">
+      <label class="form__label d-block">Image</label>
+      <%= image_tag @post.image, class: "form__image", readonly: true %>
+    </div>
 
-  <div class="field form-outline m-4">
-    <h5>Image</h5>
-    <%= text_field_tag 'image', @post.image, class: "form-control mb-4" %>
-  </div>
+    <div class="form__field">
+      <label class="form__label">Content</label>
+      <%= text_area_tag 'content', @post.content, class: "form__input", readonly: true %>
+    </div>
 
-  <div class="field form-outline m-4">
-    <h5>Author</h5>
-    <%= text_field_tag 'author', @post.author.full_name ,class: "form-control mb-4" %>
-  </div>
+    <div class="form__field">
+      <label class="form__label">Author</label>
+      <%= text_field_tag 'author', @post.author.full_name ,class: "form__input", readonly: true %>
+    </div>
 
-  <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary ms-4 w-25" %>
-  <%= link_to 'Back', posts_path, class: "btn btn-primary ms-4 w-25" %>
+    <%= link_to 'Edit', edit_post_path(@post), class: "button button--blue button--small" %>
+    <%= link_to 'Back', posts_path, class: "button button--blue button--small" %>
+  </div>
 </div>

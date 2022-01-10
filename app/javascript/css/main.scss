@@ -1,0 +1,18 @@
+@import "bootstrap";
+
+.posts {
+  @extend .text-center, .text-white;
+}
+
+.form {
+  @extend .mx-auto, .rounded, .col-4, .p-4, .bg-white, .shadow-lg, .text-center;
+  margin-bottom: 3.5rem;
+}
+
+.form__label {
+  @extend .fs-4, .text-black;
+}
+
+.form__image {
+  @extend .w-100, .rounded;
+}

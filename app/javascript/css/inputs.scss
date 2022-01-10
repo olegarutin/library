@@ -1,0 +1,13 @@
+@import "bootstrap";
+
+.form__field {
+  @extend .m-4;
+}
+
+.form__input {
+  @extend .form-control, .mb-4;
+}
+
+.form__select {
+  @extend .form-control, .form-select, .form-select-lg;
+}

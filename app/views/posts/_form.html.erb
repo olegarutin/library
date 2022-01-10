@@ -1,34 +1,34 @@
-<%= form_with(model: post, class: "mx-auto rounded col-4 p-4 bg-white") do |form| %>
+<%= form_with(model: post, class: "form") do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2 class="text-black"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
         <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="text-black"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field form-outline m-4">
-    <%= form.text_field :title, class: "form-control mb-4", placeholder: "Title" %>
+  <div class="form__field">
+    <%= form.text_field :title, class: "form__input", placeholder: "Title" %>
   </div>
 
-  <div class="field form-outline m-4">
-    <%= form.text_area :content, class: "form-control mb-4", placeholder: "Content" %>
+  <div class="form__field">
+    <%= form.text_area :content, class: "form__input", placeholder: "Content" %>
   </div>
 
-  <div class="field form-outline m-4">
-    <%= form.text_field :image, class: "form-control mb-4", placeholder: "Image" %>
+  <div class="form__field">
+    <%= form.text_field :image, class: "form__input", placeholder: "Image" %>
   </div>
 
-  <div class="field form-outline m-4">
-    <%= form.select :author_id, Author.all.map { |author| ["#{author.first_name} #{author.last_name}, #{author.gender}, #{author.birthday}", author.id] }, {}, class: "form-control form-select form-select-lg" %>
+  <div class="form__field">
+    <%= form.select :author_id, Author.all.map { |author| ["#{author.first_name} #{author.last_name}, #{author.gender}, #{author.birthday}", author.id] }, {}, class: "form__select" %>
   </div>
 
   <div class="actions">
-    <%= form.submit class: "btn btn-primary w-50 me-4" %>
-    <%= link_to 'Back', posts_path, class: "btn btn-primary ms-4" %>
+    <%= form.submit class: "button button--blue button--large" %>
+    <%= link_to 'Back', posts_path, class: "button button--blue" %>
   </div>
 <% end %>
