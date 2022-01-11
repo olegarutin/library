@@ -9,6 +9,10 @@
   margin-bottom: 3.5rem;
 }
 
+.form--large {
+  @extend .col-5;
+}
+
 .form__label {
   @extend .fs-4, .text-black;
 }
