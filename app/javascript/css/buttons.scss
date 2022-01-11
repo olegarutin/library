@@ -1,17 +1,29 @@
 @import "bootstrap";
 
 .button {
-  @extend .btn;
+  @extend .btn, .text-white;
 }
 
 .button--blue {
-  @extend .btn-primary, .mx-2;
+  @extend .btn-primary;
+}
+
+.button--yellow {
+  @extend .btn-warning, .mx-4;
+}
+
+.button--red {
+  @extend .btn-danger;
+}
+
+.button--green {
+  @extend .btn-success, .my-4;
 }
 
 .button--large {
-  @extend .w-50;
+  @extend .w-50, .me-4;
 }
 
 .button--small {
-  @extend .w-25, .mx-4;
+  @extend .w-25;
 }
