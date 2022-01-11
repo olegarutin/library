@@ -38,3 +38,5 @@ yarn-debug.log*
 .browserslistrc
 
 .gitattributes
+
+config/database.yml

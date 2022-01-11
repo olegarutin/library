@@ -3,5 +3,4 @@
                 last_name: Faker::Name.unique.last_name,
                 gender: Faker::Gender.binary_type,
                 birthday: Faker::Date.unique.birthday)
-  puts '------'
 end
