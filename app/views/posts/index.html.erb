@@ -1,5 +1,7 @@
-<div class="posts">
+<div class="posts__form">
   <h1 class="posts__title">Posts</h1>
+
+  <%= link_to 'New Post', new_post_path, class: "button button--green button--small" %>
 
   <% @posts.each do |post| %>
     <div class="form form--large">
@@ -26,7 +28,6 @@
       <%= link_to 'Show', post, class: "button button--blue button--small" %>
       <%= link_to 'Edit', edit_post_path(post), class: "button button--yellow button--small" %>
       <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small" %>
-      <%= link_to 'New Post', new_post_path, class: "button button--green button--small" %>
     </div>
   <% end %>
 </div>
