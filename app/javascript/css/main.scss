@@ -22,5 +22,5 @@
 }
 
 .form__image {
-  @extend .w-100, .rounded;
+  @extend .w-100, .rounded, .text-black;
 }
