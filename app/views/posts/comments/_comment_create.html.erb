@@ -1,0 +1,12 @@
+<div class="my-4 text-black">
+  <div class="">
+    <p class="form__label">Comments</p>
+    <%= form_with(model: [@post, @post.comments.build(author_id: @post.author_id)]) do |f| %>
+      <div class="form__field">
+        <%= f.label 'New comment', class: 'form__label' %>
+        <%= f.text_area :body, class: 'form__input' %>
+      </div>
+      <%= f.submit 'Submit', class: 'button button--blue' %>
+    <% end %>
+  </div>
+</div>

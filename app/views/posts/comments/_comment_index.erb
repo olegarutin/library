@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="card-body">
+    <%- @post.comments.each do |comment|%>
+      <%= comment.body %>
+      <br>
+    <% end %>
+  </div>
+</div>
