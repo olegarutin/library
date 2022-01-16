@@ -1,5 +1,13 @@
 @import "bootstrap";
 
+.comments {
+  @extend .text-black;
+}
+
+.comments__field {
+   @extend .card, .my-2;
+}
+
 .posts__form {
   @extend .text-center, .text-white;
 }
