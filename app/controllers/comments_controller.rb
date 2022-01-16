@@ -1,20 +1,18 @@
 class CommentsController < ApplicationController
-  # before_action :set_comment, only: %i[destroy]
- 
+  before_action :set_comment, only: %i[destroy]
+
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
     redirect_to post_path(@post)
   end
 
-  # def destroy
-  #   @comment.destroy
-
-  #   respond_to do |format|
-  #     format.html { redirect_to @post, notice: 'Post was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    @comment.destroy
+    redirect_to post_path(@post)
+  end
 
   private
 

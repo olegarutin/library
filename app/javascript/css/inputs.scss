@@ -4,6 +4,10 @@
   @extend .m-4;
 }
 
+.comments__input {
+  @extend .card-body, .text-start;
+}
+
 .form__input {
   @extend .form-control, .mb-4;
 }
