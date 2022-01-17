@@ -24,7 +24,9 @@
         <label class="form__label">Author</label>
         <%= text_field_tag 'author', post.author.full_name ,class: "form__input", readonly: true %>
       </div>
-      
+
+      <p class="form__title">Updated: <%= distance_of_time_in_words(post.updated_at, Time.now) %> ago.</p>
+
       <%= link_to 'Show', post, class: "button button--blue button--small" %>
       <%= link_to 'Edit', edit_post_path(post), class: "button button--yellow button--small" %>
       <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small" %>

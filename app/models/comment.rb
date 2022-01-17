@@ -7,4 +7,5 @@ class Comment < ApplicationRecord
   enum status: %i[published unpublished]
 
   scope :published, -> { where(status: 'published') }
+  scope :unpublished, -> { where(status: 'unpublished') }
 end
