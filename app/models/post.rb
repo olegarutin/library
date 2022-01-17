@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include ActionView::Helpers::DateHelper
+
   INVALIDED_IMAGE_ERROR = 'must be a URL for GIF, JPG or PNG image.'.freeze
 
   belongs_to :author

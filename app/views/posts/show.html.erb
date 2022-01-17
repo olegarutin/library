@@ -22,6 +22,8 @@
       <%= text_field_tag 'author', @post.author.full_name ,class: "form__input", readonly: true %>
     </div>
 
+    <p class="form__title">Updated: <%= distance_of_time_in_words(@post.updated_at, Time.now) %> ago.</p>
+
     <%= render 'posts/comments/comment_index', @comment %>
     <%= render 'posts/comments/comment_create', @comment %>
 
