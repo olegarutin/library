@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  validates_presence_of :body, message: "can't be empty"
+  validates :body, presence: true
 
   belongs_to :post
   belongs_to :author

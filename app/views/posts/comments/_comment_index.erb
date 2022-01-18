@@ -4,7 +4,7 @@
   <%= label_tag 'published', 'published' %>
   <%= check_box_tag('published', 'unpublished', params[:unpublished] == 'true', onclick: "toggle()") %>
   <% if params[:unpublished] == 'true' %>
-    <% Comment.all.published.each do |comment| %>
+    <% @post.comments.published.each do |comment| %>
       <div class="comments__field">
         <div class="comments__input">
           <%= comment.body %>
@@ -15,8 +15,8 @@
 
       <%= link_to 'Destroy', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small" %>
     <% end %>
-  <% elsif params[:unpublished] == 'false' || params[:unpublished] == nil %>
-    <% Comment.all.unpublished.each do |comment| %>
+  <% else %>
+    <% @post.comments.unpublished.each do |comment| %>
       <div class="comments__field">
         <div class="comments__input">
           <%= comment.body %>
@@ -25,7 +25,8 @@
 
       <p class="form__title">Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</p>
 
-      <%= link_to 'Destroy', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small" %>
+      <%= link_to 'Published', post_comment_path(comment.post, comment), method: :patch, class: "button button--yellow button--small" %>
+      <%= link_to 'Destroy', post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small" %>
     <% end %>
   <% end %>
 </div>

@@ -1,13 +1,28 @@
 class CommentsController < ApplicationController
   before_action :set_post!
+
   def create
-    @comment = @post.comments.create(comment_params)
-    redirect_to post_path(@post)
+    @comment = @post.comments.new(comment_params)
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to post_url(@post), notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
+      else
+       format.html { render 'posts/show', status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
     @comment = @post.comments.find(params[:id])
     @comment.destroy
+    redirect_to post_path(@post)
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.published!
     redirect_to post_path(@post)
   end
 
