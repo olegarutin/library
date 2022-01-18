@@ -1,13 +1,11 @@
 class CommentsController < ApplicationController
-
+  before_action :set_post!
   def create
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
     redirect_to post_path(@post)
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
     redirect_to post_path(@post)
@@ -15,8 +13,8 @@ class CommentsController < ApplicationController
 
   private
 
-  def set_comment
-    @comment = Comment.find(params[:id])
+  def set_post!
+    @post = Post.find(params[:post_id])
   end
 
   def comment_params

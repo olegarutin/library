@@ -24,8 +24,8 @@
 
     <p class="form__title">Updated: <%= distance_of_time_in_words(@post.updated_at, Time.now) %> ago.</p>
 
-    <%= render 'posts/comments/comment_index', @comment %>
-    <%= render 'posts/comments/comment_create', @comment %>
+    <%= render 'posts/comments/comment_index', object: @comment %>
+    <%= render 'posts/comments/comment_create', object: @comment %>
 
     <%= link_to 'Edit', edit_post_path(@post), class: "button button--blue button--small" %>
     <%= link_to 'Back', posts_path, class: "button button--blue button--small ms-4" %>
