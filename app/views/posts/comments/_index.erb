@@ -11,7 +11,7 @@
     <% @post.comments.unpublished.each do |comment| %>
       <%= render 'posts/comments/published', comment: comment %>
 
-      <%= link_to 'Published', post_comment_path(comment.post, comment), method: :patch, class: "button button--yellow button--small" %>
+      <%= link_to 'Publish', post_comment_path(comment.post, comment), method: :patch, class: "button button--yellow button--small" %>
     <% end %>
   <% end %>
 </div>
