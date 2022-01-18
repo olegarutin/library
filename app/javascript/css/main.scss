@@ -5,7 +5,7 @@
 }
 
 .comments__field {
-   @extend .card, .my-2;
+   @extend .card, .my-2, .mx-4;
 }
 
 .posts__form {
@@ -15,6 +15,10 @@
 .form {
   @extend .mx-auto, .rounded, .col-4, .p-4, .bg-white, .shadow-lg, .text-center;
   margin-bottom: 3.5rem;
+}
+
+.form__counter {
+  @extend .text-black, .mt-4;
 }
 
 .form__errors {
