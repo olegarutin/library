@@ -1,7 +1,7 @@
 <div class="posts__form">
   <h1 class="posts__title">Post was successfully created</h1>
 
-  <div class="form">
+  <div class="form form--large">
     <div class="form__field">
       <label class="form__label">Title</label>
       <%= text_field_tag 'title', @post.title, class: "form__input", readonly: true %>
@@ -24,10 +24,12 @@
 
     <p class="form__title">Updated: <%= distance_of_time_in_words(@post.updated_at, Time.now) %> ago.</p>
 
-    <%= render 'posts/comments/comment_index', object: @comment %>
-    <%= render 'posts/comments/comment_create', object: @comment %>
+    <%= render 'posts/comments/index' %>
+    <%= render 'posts/comments/create' %>
 
     <%= link_to 'Edit', edit_post_path(@post), class: "button button--blue button--small" %>
     <%= link_to 'Back', posts_path, class: "button button--blue button--small ms-4" %>
+
+    <p class="form__counter">Views: <%= @post.impressionist_count %></p>
   </div>
 </div>
