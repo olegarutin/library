@@ -1,15 +1,14 @@
 <div class= "comments text-black">
   <label class="form__label d-block">Comments</label>
+  <%= select_tag('published', options_for_select(Comment.statuses, selected: params[:published] == 'true' ? 0 : 1), onclick: "toggle()", data: { path: post_path(@post.id) }, class: "js-toggle") %>
 
-  <%= label_tag 'published', 'published' %>
-  <%= check_box_tag('published', 'unpublished', params[:unpublished] == 'true', onclick: "toggle()") %>
-  <% if params[:unpublished] == 'true' %>
+  <% if params[:published] == 'true' %>
     <% @post.comments.published.each do |comment| %>
-      <%= render 'posts/comments/published', comment: comment %>
+      <%= render 'comments/published', comment: comment %>
     <% end %>
   <% else %>
     <% @post.comments.unpublished.each do |comment| %>
-      <%= render 'posts/comments/published', comment: comment %>
+      <%= render 'comments/published', comment: comment %>
 
       <%= link_to 'Publish', post_comment_path(comment.post, comment), method: :patch, class: "button button--yellow button--small" %>
     <% end %>
