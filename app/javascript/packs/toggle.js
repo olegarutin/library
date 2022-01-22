@@ -1,18 +1,6 @@
 window.toggle = function() {
-  let url = window.location.href.split('?')[0];
-  let param = window.location.href.split('?')[1];
+  let selectBox = document.querySelector(".js-toggle"),
+      url = selectBox.dataset.path +'?published=' + Boolean(Number(selectBox.value));
 
-  if (param == 'unpublished=true') {
-    url += '?unpublished=false';
-    window.location.href = url;
-
-  } else if (document.getElementById("published").checked !== "checked") {
-    url += '?unpublished=true';
-    window.location.href = url;
-
-  } else {
-    url += '?unpublished=false';
-    window.location.href = url;
-  }
+  window.location.href = url;
 };
-
