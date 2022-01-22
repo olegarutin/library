@@ -1,15 +1,15 @@
 class CommentsController < ApplicationController
-  before_action :set_post!
+  before_action :set_post
 
   def create
     @comment = @post.comments.new(comment_params)
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to post_url(@post), notice: 'Post was successfully created.' }
+        format.html { redirect_to post_url(@post), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
-       format.html { render 'posts/show', status: :unprocessable_entity }
+        format.html { render 'posts/show', status: :unprocessable_entity }
       end
     end
   end
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def set_post!
+  def set_post
     @post = Post.find(params[:post_id])
   end
 
