@@ -1,6 +1,5 @@
 <div class="posts__form">
   <h1 class="posts__title">Show Post</h1>
-
   <div class="form form--large">
     <div class="form__field">
       <label class="form__label">Title</label>
@@ -24,8 +23,8 @@
 
     <p class="form__title">Updated: <%= distance_of_time_in_words(@post.updated_at, Time.now) %> ago.</p>
 
-    <%= render 'posts/comments/index' %>
-    <%= render 'posts/comments/create' %>
+    <%= render 'comments/index' %>
+    <%= render 'comments/create' %>
 
     <%= link_to 'Edit', edit_post_path(@post), class: "button button--blue button--small" %>
     <%= link_to 'Back', posts_path, class: "button button--blue button--small ms-4" %>
