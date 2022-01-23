@@ -5,8 +5,6 @@ ruby '3.0.3'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
-gem 'impressionist'
-
 gem 'bcrypt'
 
 gem 'rubocop', require: false
