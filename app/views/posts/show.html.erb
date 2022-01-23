@@ -2,6 +2,12 @@
   <h1 class="posts__title">Show Post</h1>
   <div class="form form--large">
     <div class="form__field">
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-success mx-auto mb-4">
+          <%= msg %>
+        </div>
+      <% end %>
+
       <label class="form__label">Title</label>
       <%= text_field_tag 'title', @post.title, class: "form__input", readonly: true %>
     </div>

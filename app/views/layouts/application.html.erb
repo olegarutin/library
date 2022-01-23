@@ -10,14 +10,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="bg-primary">
-    <div id="user_header">
-      <% if @current_user %>
-        Logged in as <%= @current_user.email %>.
-        <%= link_to "Log Out", logout_path %>
+  <body class="bg-primary text-center">
+    <div id="user_header text-black">
+      <% if current_user %>
+        Logged in as <%= current_user.email %>.
+        <%= link_to "Log Out", logout_path, class: "text-black" %>
       <% else %>
-        <%= link_to "Sign Up", signup_path %> or
-        <%= link_to "Log In", login_path %>
+        <%= link_to "Sign Up", signup_path, class: "text-black" %> or
+        <%= link_to "Log In", login_path, class: "text-black" %>
       <% end %>
     </div>
     <%= yield %>
