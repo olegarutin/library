@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :authorize, except: %i[show index]
-  before_action :protect_editing, only: %i[update edit destroy]
+  before_action :check_editable, only: %i[update edit destroy]
 
   def index
     @posts = Post.all
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :content, :image, :author_id)
   end
 
-  def protect_editing
+  def check_editable
     return if @post.nil? || @post.author_id == current_user.id
 
     flash[:notice] = 'Access denied as you are not owner of this Post'

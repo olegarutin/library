@@ -7,7 +7,9 @@
     </div>
   <% end %>
 
-  <%= link_to 'New Post', new_post_path, class: "button button--white button--small" %>
+  <% if current_user %>
+    <%= link_to 'New Post', new_post_path, class: "button button--white button--small" %>
+  <% end %>
 
   <% @posts.each do |post| %>
     <div class="form form--large">
@@ -34,8 +36,13 @@
       <p class="form__title">Updated: <%= distance_of_time_in_words(post.updated_at, Time.now) %> ago.</p>
 
       <%= link_to 'Show', post, class: "button button--blue button--small" %>
-      <%= link_to 'Edit', edit_post_path(post), class: "button button--yellow button--small" %>
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small" %>
+      <% if current_user && current_user.id == post.author_id %>
+        <%= link_to 'Edit', edit_post_path(post), class: "button button--yellow button--small mx-4"%>
+      <% end %>
+
+      <% if current_user && current_user.id == post.author_id %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small" %>
+      <% end %>
 
       <p class="form__counter">Views: <%= post.count_views %></p>
 

@@ -30,10 +30,18 @@
     <p class="form__title">Updated: <%= distance_of_time_in_words(@post.updated_at, Time.now) %> ago.</p>
 
     <%= render 'comments/index' %>
-    <%= render 'comments/create' %>
 
-    <%= link_to 'Edit', edit_post_path(@post), class: "button button--blue button--small" %>
-    <%= link_to 'Back', posts_path, class: "button button--blue button--small ms-4" %>
+    <% if current_user %>
+      <%= render 'comments/new', post: @comment %>
+    <% else %>
+      <p class="alert alert-info col-8 mx-auto mb-4">You must be logged in to leave a comment.</p>
+    <% end %>
+
+    <% if current_user && current_user.id == @post.author_id %>
+      <%= link_to 'Edit', edit_post_path(@post), class: "button button--blue button--small me-4" %>
+    <% end %>
+
+    <%= link_to 'Back', posts_path, class: "button button--blue button--small" %>
 
     <p class="form__counter">Views: <%= @post.count_views %></p>
   </div>

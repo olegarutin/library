@@ -24,7 +24,7 @@
   </div>
 
   <div class="form__field">
-    <%= form.select :author_id, Author.all.map { |author| ["#{author.first_name} #{author.last_name}, #{author.gender}, #{author.birthday}", author.id] }, {}, class: "form__select" %>
+    <%= form.hidden_field :author_id, value: current_user.id, class: 'form__input' %>
   </div>
 
   <div class="actions">

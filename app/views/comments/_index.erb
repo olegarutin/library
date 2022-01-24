@@ -1,16 +1,22 @@
-<div class= "comments text-black">
+<div class= "comments">
   <label class="form__label d-block">Comments</label>
-  <%= select_tag('published', options_for_select(Comment.statuses, selected: params[:published] == 'true' ? 0 : 1), onclick: "toggle()", data: { path: post_path(@post.id) }, class: "js-toggle") %>
+  <% if current_user %>
+    <%= select_tag('published', options_for_select(Comment.statuses, selected: params[:published] == 'true' ? 0 : 1), onclick: "toggle()", data: { path: post_path(@post.id) }, class: "js-toggle") %>
+  <% end %>
 
-  <% if params[:published] == 'true' %>
+  <% if params[:published] == 'true' || current_user.nil? %>
     <% @post.comments.published.each do |comment| %>
-      <%= render 'comments/published', comment: comment %>
+      <%= render 'comments/show', comment: comment %>
     <% end %>
   <% else %>
     <% @post.comments.unpublished.each do |comment| %>
-      <%= render 'comments/published', comment: comment %>
+      <% if comment.editable?(current_user) %>
+        <%= render 'comments/show', comment: comment %>
+      <% end %>
 
-      <%= link_to 'Publish', post_comment_path(comment.post, comment), method: :patch, class: "button button--yellow button--small" %>
+      <% if comment.editable?(current_user) %>
+        <%= link_to 'Publish', comment_status_url(comment.post, comment), method: :patch, class: "button button--green button--small" %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
