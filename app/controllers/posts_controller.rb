@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :authorize, except: %i[show index]
   before_action :check_editable, only: %i[update edit destroy]
+  before_action :set_page_visits, only: %i[show index]
 
   def index
     @posts = Post.all
@@ -66,5 +67,9 @@ class PostsController < ApplicationController
 
     flash[:notice] = 'Access denied as you are not owner of this Post'
     redirect_to root_path
+  end
+
+  def set_page_visits
+    cookies[:page_visits] = cookies[:page_visits].present? ? cookies[:page_visits].to_i + 1 : 1
   end
 end
