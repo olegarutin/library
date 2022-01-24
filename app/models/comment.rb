@@ -8,4 +8,9 @@ class Comment < ApplicationRecord
 
   scope :published, -> { where(status: 'published') }
   scope :unpublished, -> { where(status: 'unpublished') }
+
+  def editable?(current_user)
+    return if current_user.nil?
+    self.author_id == current_user.id
+  end
 end

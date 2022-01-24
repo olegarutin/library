@@ -5,7 +5,7 @@
 }
 
 .comments__input {
-  @extend .card-body, .text-start;
+  @extend .card-body, .text-start, .position-relative;
 }
 
 .form__input {

@@ -4,8 +4,12 @@
   @extend .text-black;
 }
 
+.comment__info {
+  @extend .position-absolute, .top-0, .start-100, .translate-middle, .badge, .border, .border-light, .rounded-circle, .bg-primary, .p-2;
+}
+
 .comments__field {
-   @extend .card, .my-2, .mx-4;
+   @extend .card, .mt-2, .mx-4;
 }
 
 .posts__form {
