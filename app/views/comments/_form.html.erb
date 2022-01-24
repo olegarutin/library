@@ -1,0 +1,10 @@
+<%= form_with model: [@post, @comment] do |f| %>
+  <%= render 'comments/errors' %>
+
+  <div class="form__field">
+    <%= f.text_area :body, class: 'form__input' %>
+    <%= f.hidden_field :author_id, value: current_user.id , class: 'form__input' %>
+    <%= f.hidden_field :post_id, value: @post.id, class: 'form__input' %>
+  </div>
+  <%= f.submit 'Submit', class: 'button button--blue button--small mb-4' %>
+<% end %>
