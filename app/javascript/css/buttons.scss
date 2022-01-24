@@ -9,7 +9,11 @@
 }
 
 .button--yellow {
-  @extend .btn-warning, .mx-4;
+  @extend .btn-warning;
+}
+
+.button--green {
+  @extend .btn-success;
 }
 
 .button--red {
