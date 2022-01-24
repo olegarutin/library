@@ -1,0 +1,18 @@
+<div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="mx-4">Please Sign Up or Sign In</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= link_to "Sign Up", signup_path, class: "button button--blue button--small" %>
+        <%= link_to "Sign In", login_path, class: "button button--blue button--small ms-4" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button id="exampleModalTrigger" class="d-none" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+
+<%= javascript_pack_tag 'click.js' %>

@@ -45,7 +45,10 @@
       <% end %>
 
       <p class="form__counter">Views: <%= post.count_views %></p>
-
     </div>
   <% end %>
 </div>
+
+<% if show_login_modal? %>
+  <%= render 'sessions/modal' %>
+<% end %>
