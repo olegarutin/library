@@ -1,6 +1,16 @@
-<h1>Editing Comment</h1>
-<%= render 'comments/form', post: @comment %>
+<div class="posts__form">
+  <h1 class="posts__title">Editing Comment</h1>
+  <div class="form flex">
+    <%= form_with model: [@post, @comment] do |f| %>
+      <%= render 'comments/errors' %>
 
-<div class="pt-2">
-  <%= link_to 'Back', post_path(@post), class: 'btn btn-light ml-3' %>
+      <div class="form__field">
+        <%= f.text_area :body, class: 'form__input' %>
+        <%= f.hidden_field :author_id, value: current_user.id , class: 'form__input' %>
+        <%= f.hidden_field :post_id, value: @post.id, class: 'form__input' %>
+      </div>
+      <%= f.submit 'Submit', class: 'button button--blue button--small me-4' %>
+      <%= link_to 'Back', post_path(@post), class: 'button button--blue button--small' %>
+    <% end %>
+  </div>
 </div>
