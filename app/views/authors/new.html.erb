@@ -1,41 +1,46 @@
-<h1>Sign Up</h1>
+<div class="posts__form">
+  <h1 class="posts__title">Sign Up</h1>
 
-<%= form_for @author do |f| %>
-  <% if @author.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% @author.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form">
+    <%= form_for @author do |f| %>
+      <% if @author.errors.any? %>
+        <div class="error_messages">
+          <h4 class="form__title mt-4">Form is invalid</h4>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+          <ul class="p-1">
+            <% @author.errors.full_messages.each do |message| %>
+              <li class="form__errors"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :email, class: "form__label" %>
+        <%= f.text_field :email, class: "form__input" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :first_name, class: "form__label" %>
+        <%= f.text_field :first_name, class: "form__input" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :last_name, class: "form__label" %>
+        <%= f.text_field :last_name, class: "form__input" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: "form__label" %>
+        <%= f.password_field :password, class: "form__input" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class: "form__label" %>
+        <%= f.password_field :password_confirmation, class: "form__input" %>
+      </div>
+
+      <%= f.submit "Sign Up", class: "button button--blue button--small" %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="actions"><%= f.submit "Sign Up" %></div>
-<% end %>
+</div>
