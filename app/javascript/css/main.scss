@@ -9,7 +9,7 @@
 }
 
 .comments__field {
-   @extend .card, .mt-2, .mx-4;
+   @extend .card;
 }
 
 .posts__form {
@@ -39,4 +39,9 @@
 
 .form__image {
   @extend .w-100, .rounded, .text-black;
+}
+
+.avatar {
+  width: 400px;
+  height: 400px;
 }

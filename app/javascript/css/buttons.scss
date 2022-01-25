@@ -20,8 +20,12 @@
   @extend .btn-danger;
 }
 
-.button--white {
+.button--black {
   @extend .btn-dark, .mb-4;
+}
+
+.button--white {
+  @extend .btn, .btn-light, .text-black;
 }
 
 .button--large {
