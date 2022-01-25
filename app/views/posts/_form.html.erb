@@ -12,15 +12,18 @@
   <% end %>
 
   <div class="form__field">
+    <label class="form__label">Title</label>
     <%= form.text_field :title, class: "form__input", placeholder: "Title" %>
   </div>
 
   <div class="form__field">
+    <label class="form__label">Content</label>
     <%= form.text_area :content, class: "form__input", placeholder: "Content" %>
   </div>
 
   <div class="form__field">
-    <%= form.text_field :image, class: "form__input", placeholder: "Image" %>
+    <label class="form__label">Image</label>
+    <%= form.file_field :image, class: "form__input" %>
   </div>
 
   <div class="form__field">

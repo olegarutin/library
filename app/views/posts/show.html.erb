@@ -32,7 +32,7 @@
     <%= render 'comments/index' %>
 
     <% if current_user %>
-      <%= render 'comments/new', post: @comment %>
+      <%= render 'comments/new', comment: @comment %>
     <% else %>
       <p class="alert alert-info col-8 mx-auto mb-4">You must be logged in to leave a comment.</p>
     <% end %>
@@ -42,7 +42,6 @@
     <% end %>
 
     <%= link_to 'Back', posts_path, class: "button button--blue button--small" %>
-    <%= link_to 'author', author_path, class: "button button--blue button--small" %>
 
     <p class="form__counter">Views: <%= @post.count_views %></p>
   </div>

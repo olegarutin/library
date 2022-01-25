@@ -42,6 +42,16 @@
 }
 
 .avatar {
+  @extend .rounded-circle;
   width: 400px;
   height: 400px;
+}
+
+.avatar--small {
+  width: 50px;
+  height: 50px;
+}
+
+.navbar {
+  padding: 0 10rem;
 }
