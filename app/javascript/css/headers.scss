@@ -1,7 +1,7 @@
 @import "bootstrap";
 
 .posts__title {
-  @extend .my-4;
+  @extend .mb-4, .mt-2;
 }
 
 .form__title {

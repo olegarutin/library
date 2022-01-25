@@ -1,13 +1,17 @@
-<h1>Log In</h1>
+<div class="posts__form">
+  <h1 class="posts__title">Log In</h1>
 
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
+  <div class="form text-black">
+    <%= form_tag sessions_path do %>
+      <div class="field">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email], class: "form__input" %>
+      </div>
+      <div class="field">
+        <%= label_tag :password %>
+        <%= password_field_tag :password, '', class: "form__input" %>
+      </div>
+      <div class="actions"><%= submit_tag "Log In", class: "button button--blue button--small" %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log In" %>
-<% end %>
+</div>

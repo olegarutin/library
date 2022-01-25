@@ -1,0 +1,38 @@
+<div class="posts__form">
+  <h1 class="posts__title">Edit Profile</h1>
+  <%= form_with(model: @author, class: "form form--large") do |form| %>
+    <% if current_user.profile_image.attached? %>
+      <label class="form__label">Profile Photo</label>
+      <%= image_tag current_user.profile_image, class: "avatar" %>
+    <% end %>
+
+    <div class="form__field">
+      <%= form.file_field :profile_image, class: "form__input" %>
+    </div>
+
+    <div class="form__field">
+      <%= form.text_field :first_name, class: "form__input" %>
+    </div>
+
+    <div class="form__field">
+      <%= form.text_field :last_name, class: "form__input" %>
+    </div>
+
+    <div class="form__field">
+      <%= form.text_field :email, class: "form__input" %>
+    </div>
+
+    <div class="form__field">
+      <%= form.text_field :gender, class: 'form__input', placeholder: "Gender" %>
+    </div>
+
+    <div class="form__field">
+      <%= form.text_field :birthday, class: 'form__input', placeholder: "Birthday" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class: "button button--blue button--large" %>
+      <%= link_to 'Back', author_path, class: "button button--blue" %>
+    </div>
+  <% end %>
+</div>

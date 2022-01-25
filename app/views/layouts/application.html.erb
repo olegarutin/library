@@ -11,13 +11,17 @@
   </head>
 
   <body class="bg-primary text-center">
-    <div id="user_header text-black">
+    <div id="user_header">
       <% if current_user %>
-        Logged in as <%= current_user.email %>.
+      <div class="flex">
+         <%= current_user.email %>
         <%= link_to "Log Out", logout_path, class: "text-black" %>
+      </div>
       <% else %>
-        <%= link_to "Sign Up", signup_path, class: "text-black" %> or
-        <%= link_to "Log In", login_path, class: "text-black" %>
+      <div class="mt-4">
+        <%= link_to "Sign Up", signup_path, class: "button--white" %>
+        <%= link_to "Log In", login_path, class: "button--white ms-4" %>
+      </div>
       <% end %>
     </div>
     <%= yield %>
