@@ -19,7 +19,7 @@ class Author < ApplicationRecord
       profile_image.attach(
         io: File.open(
           Rails.root.join(
-            'app', 'assets', 'images', 'default_profile.png'
+            'app', 'javascript', 'images', 'default_profile.png'
           )
         ),
         filename: 'default_profile.png',

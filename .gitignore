@@ -40,3 +40,5 @@ yarn-debug.log*
 .gitattributes
 
 config/database.yml
+
+gcs.keyfile
