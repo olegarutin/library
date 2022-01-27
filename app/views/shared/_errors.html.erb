@@ -1,0 +1,11 @@
+<% if pattern.errors.any? %>
+  <div id="form__field">
+    <h4 class="form__title mt-4">The form contains <%= pluralize(pattern.errors.count, "error") %></h4>
+
+    <ul class="p-1">
+      <% pattern.errors.each do |error| %>
+        <li class="form__errors"><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
