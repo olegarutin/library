@@ -3,17 +3,7 @@
 
   <div class="form">
     <%= form_for @author do |f| %>
-      <% if @author.errors.any? %>
-        <div class="error_messages">
-          <h4 class="form__title mt-4">Form is invalid</h4>
-
-          <ul class="p-1">
-            <% @author.errors.full_messages.each do |message| %>
-              <li class="form__errors"><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= render 'shared/errors', pattern: @author %>
 
       <div class="field">
         <%= f.label :email, class: "form__label" %>

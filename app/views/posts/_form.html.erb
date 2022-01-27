@@ -1,15 +1,5 @@
 <%= form_with(model: post, class: "form") do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h4 class="form__title"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h4>
-
-      <ul>
-        <% post.errors.each do |error| %>
-          <li class="form__errors"><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/errors', pattern: post %>
 
   <div class="form__field">
     <label class="form__label">Title</label>
