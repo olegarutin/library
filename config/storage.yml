@@ -18,6 +18,12 @@ local:
 google:
   service: GCS
   project: library
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
+  bucket: my_bucket_key
+
+google_dev:
+  service: GCS
+  project: library
   credentials: <%= Rails.root.join("gcs.keyfile") %>
   bucket: my_bucket_key
 

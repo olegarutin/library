@@ -2,7 +2,7 @@
   <h1 class="posts__title">Editing Comment</h1>
   <div class="form flex">
     <%= form_with model: [@post, @comment] do |f| %>
-      <%= render 'comments/errors' %>
+      <%= render 'shared/errors', pattern: @comment %>
 
       <div class="form__field">
         <%= f.text_area :body, class: 'form__input' %>

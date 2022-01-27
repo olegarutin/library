@@ -1,6 +1,8 @@
 <div class="posts__form">
   <h1 class="posts__title">Edit Profile</h1>
   <%= form_with(model: @author, class: "form form--large") do |form| %>
+    <%= render 'shared/errors', pattern: @author %>
+
     <% if current_user.profile_image.attached? %>
       <label class="form__label">Profile Photo</label>
       <%= image_tag current_user.profile_image, class: "avatar" %>
@@ -28,6 +30,14 @@
 
     <div class="form__field">
       <%= form.text_field :birthday, class: 'form__input', placeholder: "Birthday" %>
+    </div>
+
+    <div class="form__field">
+        <%= form.password_field :password, class: "form__input", placeholder: "Password" %>
+      </div>
+
+    <div class="form__field">
+      <%= form.password_field :password_confirmation, class: "form__input", placeholder: "Password_confirmation" %>
     </div>
 
     <div class="actions">

@@ -1,7 +1,4 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
   def create
     author = Author.find_by_email(params[:email])
     if author && author.authenticate(params[:password])

@@ -1,7 +1,11 @@
 <div class="posts__form">
   <h1 class="posts__title">Log In</h1>
-
   <div class="form text-black">
+    <% flash.each do |_type, msg| %>
+      <div class="alert alert-danger mx-auto mb-4">
+        <%= msg %>
+      </div>
+    <% end %>
     <%= form_tag sessions_path do %>
       <div class="field">
         <%= label_tag :email %>
