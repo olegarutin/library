@@ -21,7 +21,7 @@ class AuthorsController < ApplicationController
         format.html { redirect_to author_path, notice: 'Author was successfully updated.' }
         format.json { render :show, status: :ok, location: @author }
       else
-        format.html { render 'author/edit', status: :unprocessable_entity }
+        format.html { render 'edit', status: :unprocessable_entity }
       end
     end
   end
