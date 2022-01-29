@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_25_101141) do
+ActiveRecord::Schema.define(version: 2022_01_29_190856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2022_01_25_101141) do
     t.string "password_confirmation"
     t.string "password_digest"
     t.string "profile_image"
+  end
+
+  create_table "comment_votes", force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.bigint "comment_id", null: false
+    t.integer "vote_value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_comment_votes_on_author_id"
+    t.index ["comment_id"], name: "index_comment_votes_on_comment_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -107,4 +117,6 @@ ActiveRecord::Schema.define(version: 2022_01_25_101141) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comment_votes", "authors"
+  add_foreign_key "comment_votes", "comments"
 end
