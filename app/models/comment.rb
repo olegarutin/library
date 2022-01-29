@@ -4,6 +4,8 @@ class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :author
 
+  has_many :comment_votes, dependent: :destroy
+
   enum status: %i[published unpublished]
 
   scope :published, -> { where(status: 'published') }
