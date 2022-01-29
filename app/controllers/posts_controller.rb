@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :set_page_visits, only: %i[show index]
 
   def index
-    @pagy, @posts = pagy(Post.all, items: 2)
+    @pagy, @posts = pagy(Post.all, items: 8)
   end
 
   def show
