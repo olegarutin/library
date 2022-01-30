@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_29_190856) do
+ActiveRecord::Schema.define(version: 2022_01_30_200208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,16 +57,6 @@ ActiveRecord::Schema.define(version: 2022_01_29_190856) do
     t.string "profile_image"
   end
 
-  create_table "comment_votes", force: :cascade do |t|
-    t.bigint "author_id", null: false
-    t.bigint "comment_id", null: false
-    t.integer "vote_value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id"], name: "index_comment_votes_on_author_id"
-    t.index ["comment_id"], name: "index_comment_votes_on_comment_id"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.integer "status", default: 1
@@ -104,6 +94,17 @@ ActiveRecord::Schema.define(version: 2022_01_29_190856) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.bigint "comment_id", null: false
+    t.integer "vote_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id", "comment_id"], name: "index_likes_on_author_id_and_comment_id", unique: true
+    t.index ["author_id"], name: "index_likes_on_author_id"
+    t.index ["comment_id"], name: "index_likes_on_comment_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -117,6 +118,6 @@ ActiveRecord::Schema.define(version: 2022_01_29_190856) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comment_votes", "authors"
-  add_foreign_key "comment_votes", "comments"
+  add_foreign_key "likes", "authors"
+  add_foreign_key "likes", "comments"
 end

@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :author
 
-  has_many :comment_votes, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   enum status: %i[published unpublished]
 
@@ -13,6 +13,7 @@ class Comment < ApplicationRecord
 
   def editable?(current_user)
     return if current_user.nil?
+
     self.author_id == current_user.id
   end
 end

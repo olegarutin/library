@@ -8,7 +8,7 @@ class Author < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :comment_votes, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   validates :password, presence: true, format: { with: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}/i, message: PASSWORD_ERROR_MESSAGE }, allow_nil: true
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: EMAIL_ERROR_MESSAGE }
