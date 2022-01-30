@@ -14,6 +14,8 @@
   </div>
 </div>
 
+  <%= link_to 'Like', vote_path(comment.id, comment.post_id), remote: true, class: 'btn btn-success btn-sm' %>
+
 <p class="form__title">Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</p>
 
 <% if comment.created_at > 1.hour.ago && comment.editable?(current_user) %>

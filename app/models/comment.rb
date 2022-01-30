@@ -4,6 +4,8 @@ class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :author
 
+  has_many :likes, dependent: :destroy
+
   enum status: %i[published unpublished]
 
   scope :published, -> { where(status: 'published') }
@@ -11,6 +13,7 @@ class Comment < ApplicationRecord
 
   def editable?(current_user)
     return if current_user.nil?
+
     self.author_id == current_user.id
   end
 end
