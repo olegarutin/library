@@ -6,7 +6,6 @@
   <div class="comments__field w-75">
     <div class="comments__input">
       <%= comment.body %>
-
       <% if comment.created_at != comment.updated_at %>
         <%= content_tag 'span', 'Edited', class: "comment__info" %>
       <% end %>
@@ -14,9 +13,10 @@
   </div>
 </div>
 
-  <%= link_to 'Like', vote_path(comment.id, comment.post_id), remote: true, class: 'btn btn-success btn-sm' %>
-
-<p class="form__title">Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</p>
+<div class="d-flex justify-content-center mb-2">
+  <span class="me-4"><%= render 'likes/vote_link', comment: comment %></span>
+  <span class="form__title ms-4">Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</span>
+</div>
 
 <% if comment.created_at > 1.hour.ago && comment.editable?(current_user) %>
   <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), class: "button button--yellow button--small" %>

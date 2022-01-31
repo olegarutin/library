@@ -100,7 +100,6 @@ ActiveRecord::Schema.define(version: 2022_01_30_200208) do
     t.integer "vote_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id", "comment_id"], name: "index_likes_on_author_id_and_comment_id", unique: true
     t.index ["author_id"], name: "index_likes_on_author_id"
     t.index ["comment_id"], name: "index_likes_on_comment_id"
   end
