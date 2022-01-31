@@ -11,6 +11,8 @@ gem 'google-cloud-storage'
 
 gem 'pagy'
 
+gem 'ancestry'
+
 gem 'rubocop', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
