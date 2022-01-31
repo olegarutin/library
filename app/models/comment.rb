@@ -16,4 +16,12 @@ class Comment < ApplicationRecord
 
     self.author_id == current_user.id
   end
+
+  def likes_count
+    likes.all.likes.count
+  end
+
+  def dislikes_count
+    likes.all.dislikes.count
+  end
 end
