@@ -1,0 +1,15 @@
+<% if current_user %>
+  <% id = "votes-#{comment.id}" %>
+  <div id="<%= id %>">
+    <%= link_to vote_path('like[author_id]': current_user.id, 'like[comment_id]': comment.id, 'like[vote_type]': "likes", post_id: comment.post_id), class: "text-decoration-none", remote: true do %>
+      <i class="far fa-thumbs-up text-success"><span><%= comment.likes_count %></span></i>
+    <% end %>
+
+    <%= link_to vote_path('like[author_id]': current_user.id, 'like[comment_id]': comment.id, 'like[vote_type]': "dislikes", post_id: comment.post_id), class: "text-decoration-none", remote: true do %>
+      <i class="far fa-thumbs-down text-danger text-decoration-none"><span><%= comment.dislikes_count %></span></i>
+    <% end %>
+  </div>
+<% else %>
+  <i class="far fa-thumbs-up text-success"><span><%= comment.likes_count %></span></i>
+  <i class="far fa-thumbs-down text-danger text-decoration-none"><span><%= comment.dislikes_count %></span></i>
+<% end %>
