@@ -26,11 +26,11 @@
       <p class="form__title">Updated: <%= distance_of_time_in_words(post.updated_at, Time.now) %> ago.</p>
 
       <%= link_to 'Show', post, class: "button button--blue button--small" %>
-      <% if current_user && current_user.id == post.author_id %>
+      <% if current_user == post.author %>
         <%= link_to 'Edit', edit_post_path(post), class: "button button--yellow button--small mx-4"%>
       <% end %>
 
-      <% if current_user && current_user.id == post.author_id %>
+      <% if current_user == post.author %>
         <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small" %>
       <% end %>
 

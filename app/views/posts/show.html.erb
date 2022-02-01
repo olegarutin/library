@@ -37,7 +37,7 @@
       <p class="alert alert-info col-8 mx-auto mb-4">You must be logged in to leave a comment.</p>
     <% end %>
 
-    <% if current_user && current_user.id == @post.author_id %>
+    <% if current_user == @post.author %>
       <%= link_to 'Edit', edit_post_path(@post), class: "button button--blue button--small me-4" %>
     <% end %>
 
