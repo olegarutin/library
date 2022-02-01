@@ -1,10 +1,11 @@
-<%= form_with model: [@post, @comment] do |f| %>
-  <%= render 'shared/errors', pattern: @comment %>
-
+<%= form_with(model: [@post, @comment], data: { remote: true }) do |f| %>
   <div class="form__field">
     <%= f.text_area :body, class: 'form__input' %>
+    <% if params[:comment].present? %>
+      <%= f.hidden_field :parent_id, value: params[:comment][:parent_id] %>
+    <% end %>
     <%= f.hidden_field :author_id, value: current_user.id , class: 'form__input' %>
     <%= f.hidden_field :post_id, value: @post.id, class: 'form__input' %>
   </div>
-  <%= f.submit 'Submit', class: 'button button--blue button--small mb-4' %>
+  <%= f.submit 'Submit', class: 'button button--blue button--small mb-4', remote: true %>
 <% end %>

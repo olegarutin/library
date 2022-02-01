@@ -3,7 +3,7 @@ class CommentStatusesController < ApplicationController
 
   def update
     @comment.published!
-    redirect_to post_path(@post)
+    render 'comments/comment.js.erb'
   end
 
   private
