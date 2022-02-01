@@ -1,38 +1,38 @@
-<div class="form form--large">
-  <div class="form__field">
+<div class='form form--large'>
+  <div class='form__field'>
     <% if current_user.profile_image.attached? %>
-      <label class="form__label">Profile Photo</label>
-      <%= image_tag current_user.profile_image, class: "avatar" %>
+      <label class='form__label'>Profile Photo</label>
+      <%= image_tag current_user.profile_image, class: 'avatar' %>
     <% end %>
   </div>
 
-  <div class="form__field">
-    <label class="form__label">First Name</label>
-    <%= text_field_tag 'first name', current_user.first_name, class: "form__input" %>
+  <div class='form__field'>
+    <label class='form__label'>First Name</label>
+    <%= text_field_tag 'first name', current_user.first_name, class: 'form__input' %>
   </div>
 
-  <div class="form__field">
-    <label class="form__label">Last Name</label>
-    <%= text_field_tag 'first name', current_user.last_name, class: "form__input" %>
+  <div class='form__field'>
+    <label class='form__label'>Last Name</label>
+    <%= text_field_tag 'first name', current_user.last_name, class: 'form__input' %>
   </div>
 
-  <div class="form__field">
-    <label class="form__label">Email</label>
-    <%= text_area_tag 'email', current_user.email, class: "form__input" %>
+  <div class='form__field'>
+    <label class='form__label'>Email</label>
+    <%= text_area_tag 'email', current_user.email, class: 'form__input' %>
   </div>
 
-  <div class="form__field">
-    <label class="form__label">Gender</label>
-    <%= text_field_tag 'gender', current_user.gender.present? ? current_user.gender : 'Not specified', default: '1', class: "form__input" %>
+  <div class='form__field'>
+    <label class='form__label'>Gender</label>
+    <%= text_field_tag 'gender', current_user.gender.present? ? current_user.gender : 'Not specified', default: '1', class: 'form__input' %>
   </div>
 
-  <div class="form__field">
-    <label class="form__label">Birthday</label>
-    <%= text_field_tag 'birthday', current_user.birthday.present? ? current_user.birthday : 'Not specified' ,class: "form__input" %>
+  <div class='form__field'>
+    <label class='form__label'>Birthday</label>
+    <%= text_field_tag 'birthday', current_user.birthday.present? ? current_user.birthday : 'Not specified' ,class: 'form__input' %>
   </div>
 
-  <p class="form__title">Created: <%= distance_of_time_in_words(current_user.created_at, Time.now) %> ago.</p>
+  <p class='form__title'>Created: <%= distance_of_time_in_words(current_user.created_at, Time.now) %> ago.</p>
 
-  <%= link_to 'Edit', edit_author_path(current_user), class: "button button--blue button--small me-4" %>
-  <%= link_to 'Back', posts_path, class: "button button--blue button--small" %>
+  <%= link_to 'Edit', edit_author_path(current_user), class: 'button button--blue button--small me-4' %>
+  <%= link_to 'Back', posts_path, class: 'button button--blue button--small' %>
 </div>
