@@ -1,0 +1,1 @@
+document.getElementById('<%= "reply-#{params[:comment][:parent_id]}" %>').innerHTML = ("<%= j render 'form' %>");
