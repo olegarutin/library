@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.where('title LIKE ?', "%#{params[:q]}%")
+    @posts = Post.where('title LIKE ? or content ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
   end
 
   private

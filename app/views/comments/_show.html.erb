@@ -16,6 +16,7 @@
 <div class="d-flex justify-content-center mb-2">
   <span class="me-4"><%= render 'likes/vote_link', comment: comment %></span>
   <span class="form__title ms-4">Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</span>
+  <%= link_to 'Reply', new_post_comment_path(@post, 'comment[parent_id]': comment.id), class: 'text-secondary text-decoration-none ms-4', remote: true %>
 </div>
 
 <% if comment.created_at > 1.hour.ago && comment.editable?(current_user) %>
@@ -23,5 +24,5 @@
 <% end %>
 
 <% if comment.editable?(current_user) %>
-  <%= link_to 'Destroy', post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small mx-4" %>
+  <%= link_to 'Destroy', post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small mx-4", remote: true %>
 <% end %>

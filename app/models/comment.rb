@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  has_ancestry
+
   validates :body, presence: true
 
   belongs_to :post

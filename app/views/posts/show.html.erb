@@ -29,7 +29,7 @@
 
     <p class="form__title">Updated: <%= distance_of_time_in_words(@post.updated_at, Time.now) %> ago.</p>
 
-    <%= render 'comments/index' %>
+    <%= render 'comments/index', post: @post %>
 
     <% if current_user %>
       <%= render 'comments/new', comment: @comment %>
