@@ -13,10 +13,12 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center mb-2">
-  <span class="me-4"><%= render 'likes/vote_link', comment: comment %></span>
-  <span class="form__title ms-4">Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</span>
-  <%= link_to 'Reply', new_post_comment_path(@post, 'comment[parent_id]': comment.id), class: 'text-secondary text-decoration-none ms-4', remote: true %>
+<div class="d-flex justify-content-between mb-2 w-75 mx-auto px-3">
+  <span><%= render 'likes/vote_link', comment: comment %></span>
+  <span class="form__title">Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</span>
+  <% if comment.children.count <= 2 && comment.path_ids.count <= 2 %>
+    <%= link_to 'Reply', new_post_comment_path(@post, 'comment[parent_id]': comment.id), class: 'text-secondary text-decoration-none', remote: true %>
+  <% end %>
 </div>
 
 <% if comment.created_at > 1.hour.ago && comment.editable?(current_user) %>
