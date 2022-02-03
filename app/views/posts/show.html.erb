@@ -29,6 +29,10 @@
 
     <p class="form__title">Updated: <%= distance_of_time_in_words(@post.updated_at, Time.now) %> ago.</p>
 
+    <% if current_user %>
+      <%= select_tag :status, options_for_select(Comment.statuses, selected: @status ? @status : 1), data: { url: status_path(id: @post), remote: true }, class: 'px-2 mx-auto form-select w-25' %>
+    <% end %>
+
     <%= render 'comments/index', post: @post %>
 
     <% if current_user %>

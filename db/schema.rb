@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_083536) do
+ActiveRecord::Schema.define(version: 2022_02_03_195752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2022_02_01_083536) do
     t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "parent_id"
     t.string "ancestry"
     t.index ["ancestry"], name: "index_comments_on_ancestry"
     t.index ["author_id"], name: "index_comments_on_author_id"

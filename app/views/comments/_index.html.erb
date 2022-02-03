@@ -1,29 +1,31 @@
 <% id = "comments-#{@post.id}" %>
-<div class= "comments" id="<%= id %>">
-  <label class="form__label d-block">Comments</label>
-
-  <% if current_user %>
-      <%= select_tag :status, options_for_select(Comment.statuses, selected: @status ? @status : 1), data: { url: status_path(id: @post), remote: true }, class: 'px-2 mx-auto form-select w-25' %>
-  <% end %>
-
+<div class= 'comments' id="<%= id %>">
+  <label class='form__label d-block'>Comments</label>
   <% if @selected_comments %>
     <% @selected_comments.each do |comment| %>
       <% if comment.unpublished? && comment.editable?(current_user) %>
           <%= render 'comments/show', comment: comment %>
-          <%= link_to 'Publish', comment_status_url(comment.post, comment), method: :patch, class: "button button--green button--small", remote: true %>
+          <%= link_to 'Publish', comment_status_url(comment.post, comment), method: :patch, class: 'button button--green button--small me-4', remote: true %>
       <% end %>
 
-      <% if comment.published? %>
-        <%= render 'comments/show', comment: comment %>
-        <% reply = "reply-#{comment.id}" %>
-        <div id="<%= reply %>"></div>
-      <% end %>
+      <%= render 'comments/published', comment: comment %>
     <% end %>
   <% else %>
-    <% @post.comments.unpublished.each do |comment| %>
-      <% if comment.editable?(current_user) %>
-        <%= render 'comments/show', comment: comment %>
-        <%= link_to 'Publish', comment_status_url(comment.post, comment), method: :patch, class: "button button--green button--small", remote: true %>
+    <% if @status %>
+      <% @post.comments.where(status: @status).each do |comment| %>
+        <%= render 'comments/published', comment: comment %>
+
+        <%if comment.editable?(current_user) && comment.unpublished? %>
+          <%= render 'comments/show', comment: comment %>
+          <%= link_to 'Publish', comment_status_url(comment.post, comment), method: :patch, class: 'button button--green button--small me-4', remote: true %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% @post.comments.unpublished.each do |comment| %>
+        <% if comment.editable?(current_user) %>
+          <%= render 'comments/show', comment: comment %>
+          <%= link_to 'Publish', comment_status_url(comment.post, comment), method: :patch, class: 'button button--green button--small me-4', remote: true %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

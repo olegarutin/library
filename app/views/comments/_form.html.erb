@@ -3,6 +3,9 @@
     <%= f.text_area :body, class: 'form__input' %>
     <% if params[:comment].present? %>
       <%= f.hidden_field :parent_id, value: params[:comment][:parent_id] %>
+      <% if params[:comment][:parent_id] %>
+        <%= f.hidden_field :status, value: 'published' %>
+      <% end %>
     <% end %>
     <%= f.hidden_field :author_id, value: current_user.id , class: 'form__input' %>
     <%= f.hidden_field :post_id, value: @post.id, class: 'form__input' %>

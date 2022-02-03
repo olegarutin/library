@@ -16,13 +16,16 @@
 <div class="d-flex justify-content-between mb-2 w-75 mx-auto px-3">
   <span><%= render 'likes/vote_link', comment: comment %></span>
   <span class="form__title">Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</span>
-  <% if comment.children.count <= 2 && comment.path_ids.count <= 2 %>
+  <% if comment.published? %>
     <%= link_to 'Reply', new_post_comment_path(@post, 'comment[parent_id]': comment.id), class: 'text-secondary text-decoration-none', remote: true %>
   <% end %>
 </div>
 
+<% reply = "reply-#{comment.id}" %>
+<div id="<%= reply %>"></div>
+
 <% if comment.created_at > 1.hour.ago && comment.editable?(current_user) %>
-  <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), class: "button button--yellow button--small" %>
+  <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), class: "ms-4 button button--yellow button--small" %>
 <% end %>
 
 <% if comment.editable?(current_user) %>

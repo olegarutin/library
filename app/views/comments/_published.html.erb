@@ -1,0 +1,13 @@
+<% if comment.published? %>
+  <% if comment.is_root? %>
+    <%= render 'comments/show', comment: comment %>
+
+    <% if comment.has_children? %>
+      <% Comment.where(id: comment.descendant_ids).each do |child| %>
+        <div class="ms-4">
+          <%= render 'comments/show', comment: child %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

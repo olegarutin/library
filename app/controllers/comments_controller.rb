@@ -9,11 +9,13 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @status = params[:comment][:status]
     @comment = @post.comments.create(comment_params)
     render 'comment.js.erb'
   end
 
   def destroy
+    @status = @comment.status
     @comment.destroy
     render 'comment.js.erb'
   end
