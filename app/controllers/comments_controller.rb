@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @status = @comment.status
+    @status = Comment.statuses[@comment.status]
     @comment.destroy
     render 'comment.js.erb'
   end
