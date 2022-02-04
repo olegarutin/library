@@ -4,7 +4,7 @@
 
     <% if comment.has_children? %>
       <% Comment.where(id: comment.descendant_ids).each do |child| %>
-        <div class="comments__nested">
+        <div class='comments__nested'>
           <%= render 'comments/show', comment: child %>
         </div>
       <% end %>

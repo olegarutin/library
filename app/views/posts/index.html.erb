@@ -1,55 +1,55 @@
-<div class="posts__form">
-  <h1 class="posts__title">Posts</h1>
+<div class='posts__form'>
+  <h1 class='posts__title'>Posts</h1>
 
   <% flash.each do |type, msg| %>
-    <div class="alert alert-success col-4 mx-auto mb-4">
+    <div class='alert alert-success col-4 mx-auto mb-4'>
       <%= msg %>
     </div>
   <% end %>
 
   <% if current_user %>
-    <%= link_to 'New Post', new_post_path, class: "button button--black button--small" %>
+    <%= link_to 'New Post', new_post_path, class: 'button button--black button--small' %>
   <% end %>
 
   <% @posts.each do |post| %>
-    <div class="form form--large">
-      <div class="form__field">
-        <label class="form__label">Title</label>
-        <%= text_field_tag 'title', post.title, class: "form__input", readonly: true %>
+    <div class='form form--large'>
+      <div class='form__field'>
+        <label class='form__label'>Title</label>
+        <%= text_field_tag 'title', post.title, class: 'form__input', readonly: true %>
       </div>
 
-      <div class="form__field">
-        <label class="form__label">Image</label>
-        <%= image_tag post.image, class: "form__image" %>
+      <div class='form__field'>
+        <label class='form__label'>Image</label>
+        <%= image_tag post.image, class: 'form__image' %>
       </div>
 
-      <div class="form__field">
-        <label class="form__label">Content</label>
-        <%= text_area_tag 'content', post.content, class: "form__input", readonly: true %>
+      <div class='form__field'>
+        <label class='form__label'>Content</label>
+        <%= text_area_tag 'content', post.content, class: 'form__input', readonly: true %>
       </div>
 
-      <div class="form__field">
-        <label class="form__label">Author</label>
-        <%= text_field_tag 'author', post.author.full_name ,class: "form__input", readonly: true %>
+      <div class='form__field'>
+        <label class='form__label'>Author</label>
+        <%= text_field_tag 'author', post.author.full_name ,class: 'form__input', readonly: true %>
       </div>
 
-      <p class="form__title">Updated: <%= distance_of_time_in_words(post.updated_at, Time.now) %> ago.</p>
+      <p class='form__title'>Updated: <%= distance_of_time_in_words(post.updated_at, Time.now) %> ago.</p>
 
-      <%= link_to 'Show', post, class: "button button--blue button--small" %>
+      <%= link_to 'Show', post, class: 'button button--blue button--small' %>
       <% if current_user == post.author %>
-        <%= link_to 'Edit', edit_post_path(post), class: "button button--yellow button--small mx-4"%>
+        <%= link_to 'Edit', edit_post_path(post), class: 'button button--yellow button--small mx-4'%>
       <% end %>
 
       <% if current_user == post.author %>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small" %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button button--red button--small' %>
       <% end %>
 
-      <p class="form__counter">Views: <%= post.count_views %></p>
+      <p class='form__counter'>Views: <%= post.count_views %></p>
     </div>
   <% end %>
 
   <% if @posts.count >= 8 %>
-    <div class="d-flex justify-content-center">
+    <div class='d-flex justify-content-center'>
       <%== pagy_bootstrap_nav(@pagy) %>
     </div>
   <% end %>

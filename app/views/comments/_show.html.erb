@@ -1,21 +1,21 @@
-<div class="row mt-4">
+<div class='row mt-4'>
   <% if comment.author.profile_image.attached? %>
-    <%= image_tag comment.author.profile_image, class: "col-lg-2 avatar avatar--small mt-1" %>
+    <%= image_tag comment.author.profile_image, class: 'col-lg-2 avatar avatar--small mt-1' %>
   <% end %>
 
-  <div class="comments__field w-75">
-    <div class="comments__input">
+  <div class='comments__field w-75'>
+    <div class='comments__input'>
       <%= comment.body %>
       <% if comment.created_at != comment.updated_at %>
-        <%= content_tag 'span', 'Edited', class: "comment__info" %>
+        <%= content_tag 'span', 'Edited', class: 'comment__info' %>
       <% end %>
     </div>
   </div>
 </div>
 
-<div class="d-flex justify-content-between mb-2 w-75 mx-auto px-3">
+<div class='d-flex justify-content-between mb-2 w-75 mx-auto px-3'>
   <span><%= render 'likes/vote_link', comment: comment %></span>
-  <span class="form__title">Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</span>
+  <span class='form__title'>Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</span>
   <% if comment.published? && comment.allowed? %>
       <%= link_to 'Reply', new_post_comment_path(@post, 'comment[parent_id]': comment.id), class: 'text-secondary text-decoration-none', remote: true %>
   <% end %>
@@ -25,9 +25,9 @@
 <div id="<%= reply %>"></div>
 
 <% if comment.created_at > 1.hour.ago && comment.editable?(current_user) %>
-  <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), class: "ms-4 button button--yellow button--small" %>
+  <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), class: 'ms-4 button button--yellow button--small' %>
 <% end %>
 
 <% if comment.editable?(current_user) %>
-  <%= link_to 'Destroy', post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "button button--red button--small mx-4", remote: true %>
+  <%= link_to 'Destroy', post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button button--red button--small mx-4', remote: true %>
 <% end %>
