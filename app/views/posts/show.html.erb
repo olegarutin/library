@@ -1,53 +1,49 @@
-<div class="posts__form">
-  <h1 class="posts__title">Show Post</h1>
-  <div class="form form--large">
-    <div class="form__field">
+<div class='posts__form'>
+  <h1 class='posts__title'>Show Post</h1>
+  <div class='form form--large'>
+    <div class='form__field'>
       <% flash.each do |type, msg| %>
-        <div class="alert alert-success mx-auto mb-4">
+        <div class='alert alert-success mx-auto mb-4'>
           <%= msg %>
         </div>
       <% end %>
 
-      <label class="form__label">Title</label>
-      <%= text_field_tag 'title', @post.title, class: "form__input", readonly: true %>
+      <label class='form__label'>Title</label>
+      <%= text_field_tag 'title', @post.title, class: 'form__input', readonly: true %>
     </div>
 
-    <div class="form__field">
-      <label class="form__label d-block">Image</label>
-      <%= image_tag @post.image, alt: "Not fount image", class: "form__image" %>
+    <div class='form__field'>
+      <label class='form__label d-block'>Image</label>
+      <%= image_tag @post.image, alt: 'Not fount image', class: 'form__image' %>
     </div>
 
-    <div class="form__field">
-      <label class="form__label">Content</label>
-      <%= text_area_tag 'content', @post.content, class: "form__input", readonly: true %>
+    <div class='form__field'>
+      <label class='form__label'>Content</label>
+      <%= text_area_tag 'content', @post.content, class: 'form__input', readonly: true %>
     </div>
 
-    <div class="form__field">
-      <label class="form__label">Author</label>
-      <%= text_field_tag 'author', @post.author.full_name ,class: "form__input", readonly: true %>
+    <div class='form__field'>
+      <label class='form__label'>Author</label>
+      <%= text_field_tag 'author', @post.author.full_name ,class: 'form__input', readonly: true %>
     </div>
 
-    <p class="form__title">Updated: <%= distance_of_time_in_words(@post.updated_at, Time.now) %> ago.</p>
-
-    <% if current_user %>
-      <%= select_tag :status, options_for_select(Comment.statuses, selected: @status ? @status : 1), data: { url: status_path(id: @post), remote: true }, class: 'px-2 mx-auto form-select w-25' %>
-    <% end %>
+    <p class='form__title'>Updated: <%= distance_of_time_in_words(@post.updated_at, Time.now) %> ago.</p>
 
     <%= render 'comments/index', post: @post %>
 
     <% if current_user %>
       <%= render 'comments/new', comment: @comment %>
     <% else %>
-      <p class="alert alert-info col-8 mx-auto mb-4">You must be logged in to leave a comment.</p>
+      <p class='alert alert-info col-8 mx-auto mb-4'>You must be logged in to leave a comment.</p>
     <% end %>
 
     <% if current_user == @post.author %>
-      <%= link_to 'Edit', edit_post_path(@post), class: "button button--blue button--small me-4" %>
+      <%= link_to 'Edit', edit_post_path(@post), class: 'button button--blue button--small me-4' %>
     <% end %>
 
-    <%= link_to 'Back', posts_path, class: "button button--blue button--small" %>
+    <%= link_to 'Back', posts_path, class: 'button button--blue button--small' %>
 
-    <p class="form__counter">Views: <%= @post.count_views %></p>
+    <p class='form__counter'>Views: <%= @post.count_views %></p>
   </div>
 </div>
 

@@ -10,9 +10,6 @@ class Comment < ApplicationRecord
 
   enum status: %i[published unpublished]
 
-  scope :published, -> { where(status: 'published') }
-  scope :unpublished, -> { where(status: 'unpublished') }
-
   def editable?(current_user)
     return if current_user.nil?
 
@@ -25,5 +22,9 @@ class Comment < ApplicationRecord
 
   def dislikes_count
     likes.all.dislikes.count
+  end
+
+  def allowed?
+    Comment.find_by(id: self.root_id).descendant_ids.count < 3
   end
 end

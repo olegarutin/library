@@ -9,7 +9,7 @@ class CommentStatusesController < ApplicationController
 
   def status
     @status = params[:status]
-    @selected_comments = @post.comments.where(status: @status).order(created_at: :desc)
+    @selected_comments = @post.comments.where(status: @status)
     render 'comments/comment.js.erb'
   end
 

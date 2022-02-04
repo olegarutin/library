@@ -1,0 +1,4 @@
+<% if comment.unpublished? && comment.editable?(current_user) %>
+  <%= render 'comments/show', comment: comment %>
+  <%= link_to 'Publish', comment_status_url(comment.post, comment), method: :patch, class: 'button button--green button--small me-4', remote: true %>
+<% end %>

@@ -1,10 +1,10 @@
-<div class="posts__form">
-  <h1 class="posts__title">Editing Comment</h1>
-  <div class="form flex">
+<div class='posts__form'>
+  <h1 class='posts__title'>Editing Comment</h1>
+  <div class='form flex'>
     <%= form_with model: [@post, @comment] do |f| %>
       <%= render 'shared/errors', pattern: @comment %>
 
-      <div class="form__field">
+      <div class='form__field'>
         <%= f.text_area :body, class: 'form__input' %>
         <%= f.hidden_field :author_id, value: current_user.id , class: 'form__input' %>
         <%= f.hidden_field :post_id, value: @post.id, class: 'form__input' %>
