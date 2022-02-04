@@ -16,8 +16,8 @@
 <div class="d-flex justify-content-between mb-2 w-75 mx-auto px-3">
   <span><%= render 'likes/vote_link', comment: comment %></span>
   <span class="form__title">Updated: <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago.</span>
-  <% if comment.published? %>
-    <%= link_to 'Reply', new_post_comment_path(@post, 'comment[parent_id]': comment.id), class: 'text-secondary text-decoration-none', remote: true %>
+  <% if comment.published? && comment.allowed? %>
+      <%= link_to 'Reply', new_post_comment_path(@post, 'comment[parent_id]': comment.id), class: 'text-secondary text-decoration-none', remote: true %>
   <% end %>
 </div>
 
