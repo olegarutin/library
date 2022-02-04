@@ -4,6 +4,10 @@
   @extend .text-black;
 }
 
+.comments__nested {
+  margin-left: 3rem;
+}
+
 .comment__info {
   @extend .position-absolute, .top-0, .start-100, .translate-middle, .badge, .border, .border-light, .rounded-circle, .bg-primary, .p-2;
 }
