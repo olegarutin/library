@@ -74,6 +74,6 @@ class PostsController < ApplicationController
   end
 
   def set_page_visits
-    cookies[:page_visits] = cookies[:page_visits].present? ? cookies[:page_visits].to_i + 1 : 1
+    cookies[:page_visits] = cookies[:page_visits].to_i + 1
   end
 end
