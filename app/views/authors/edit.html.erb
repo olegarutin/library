@@ -4,7 +4,7 @@
     <%= render 'shared/errors', pattern: @author %>
 
     <% if current_user.profile_image.attached? %>
-      <label class='form__label'>Profile Photo</label>
+      <p class='form__label'>Profile Photo</p>
       <%= image_tag current_user.profile_image, class: 'avatar' %>
     <% end %>
 
@@ -25,11 +25,11 @@
     </div>
 
     <div class='form__field'>
-      <%= form.text_field :gender, class: 'form__input', placeholder: 'Gender' %>
+      <%= form.select :gender,options_for_select([['Male'], ['Female']], selected: @author.gender), {}, class: 'form-select mx-auto' %>
     </div>
 
-    <div class='form__field'>
-      <%= form.text_field :birthday, class: 'form__input', placeholder: 'Birthday' %>
+    <div class='form__field d-flex justify-content-between'>
+      <%= form.date_select :birthday, start_year: 2000, with_css_classes: true %>
     </div>
 
     <div class='form__field'>

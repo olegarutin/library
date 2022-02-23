@@ -4,6 +4,10 @@
   @extend .m-4;
 }
 
+.month, .day, .year {
+  @extend .form-control, .w-25;
+}
+
 .comments__input {
   @extend .card-body, .text-start, .position-relative;
 }

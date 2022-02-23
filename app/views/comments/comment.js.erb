@@ -1,1 +1,2 @@
 document.getElementById('<%= "comments-#{@post.id}" %>').innerHTML = "<%= j render 'comments/index', post: @post %>";
+$('#comment-body').val('');
